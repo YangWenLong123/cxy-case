@@ -1,0 +1,62 @@
+<!--
+ * @Author: along
+ * @Description: 代码储存到canvas
+ * @Date: 2023-06-29 22:24:05
+ * @LastEditors: along
+ * @LastEditTime: 2023-06-30 21:01:37
+ * @FilePath: /cxy-case/canvas-javascript-url/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/tesseract.js/4.0.3/tesseract.min.js"></script>
+  </head>
+  <body>
+    <pre id="code">
+      console.log(1+1)
+    </pre>
+
+    <button id="saveImg">保存为图片</button>
+    <input type="file" id="imageInput" />
+    <button id="recognizeText">识别文本</button>
+
+    <div id="result"></div>
+  </body>
+  <script>
+    const Tesseract = window.Tesseract;
+
+    function convertToImage() {
+      html2canvas(document.getElementById("code")).then(function (canvas) {
+        var link = document.createElement("a");
+        link.href = canvas.toDataURL();
+        link.download = "code.png";
+        link.click();
+      });
+    }
+
+    function recognizeText() {
+      const imageInput = document.getElementById("imageInput");
+      const file = imageInput.files[0];
+
+      Tesseract.recognize(file)
+        .then((result) => {
+          console.log("result", result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
+    document.getElementById("recognizeText").addEventListener("click", () => {
+      recognizeText();
+    });
+
+    document.getElementById("saveImg").addEventListener("click", () => {
+      convertToImage();
+    });
+  </script>
+</html>
