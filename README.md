@@ -83,6 +83,8 @@ const _0xf15c04=_0x187e;(function(_0x396a13,_0x5ad26c){const _0x28d0c2=_0x187e,_
 ## 描述
 代码保存为图片，再从图片中识别代码
 
+![Alt text](image.png)
+
 - 点击保存图片按钮
 - 选择图片
 - 识别代码
