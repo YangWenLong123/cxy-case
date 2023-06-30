@@ -104,6 +104,8 @@ const _0xf15c04=_0x187e;(function(_0x396a13,_0x5ad26c){const _0x28d0c2=_0x187e,_
 ```
 
 ```js
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/tesseract.js/4.0.3/tesseract.min.js"></script>
 <script>
   const Tesseract = window.Tesseract;
 
