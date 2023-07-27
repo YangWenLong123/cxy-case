@@ -3,7 +3,7 @@
  * @Description: 压缩脚本
  * @Date: 2023-06-29 21:31:46
  * @LastEditors: along
- * @LastEditTime: 2023-06-29 21:50:09
+ * @LastEditTime: 2023-07-23 17:58:01
  * @FilePath: /cxy-case/gulp-javascript-obfuscator/gulpfile.js
  */
 
@@ -24,7 +24,7 @@ gulp.task('one', function (cb) {
       selfDefending: true,
       // Type: number Default: 0.75 Min: 0 Max: 1
       controlFlowFlatteningThreshold: secretKey,
-      deadCodeInjectionThreshold: 0.6
+      deadCodeInjectionThreshold: 0.7
     }))
     .pipe(gulp.dest('dist'));
   cb();
