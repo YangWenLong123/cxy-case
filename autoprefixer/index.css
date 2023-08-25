@@ -1,0 +1,13 @@
+div {
+  font-size: 12px;
+  color: red;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: red;
+  position: relative;
+  left: 0;
+  z-index: 1;
+  margin: 10px;
+  padding: 10px;
+  border: 1px red solid;
+}
