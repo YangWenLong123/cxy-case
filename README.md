@@ -2,7 +2,8 @@
 
 - [gulp-javascript-obfuscator(代码混淆)](#gulp-javascript-obfuscator)
 - [canvas-javascript-url(图片识别)](#canvas-javascript-url)
-- [wangEditor](#富文本编辑器使用)
+- [wangEditor](#wangEditor)
+- [mark-text](#mark-text)
 
 # gulp-javascript-obfuscator
 
@@ -268,3 +269,13 @@ npm run serve
 
 如图所示
 ![Alt text](image-1.png)
+
+# mark-text
+
+## 说明
+
+文字标注功能,支持修改，取消标注
+
+![Alt text](image-4.png)
+
+![Alt text](image-5.png)
