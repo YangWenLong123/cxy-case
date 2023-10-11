@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "@wangeditor/editor-for-vue": "^1.0.2",
-    "express": "^4.18.2",
-    "sass": "^1.66.1",
-    "sass-loader": "^13.3.2"
-  }
-}
