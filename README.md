@@ -4,6 +4,7 @@
 - [canvas-javascript-url(图片识别)](#canvas-javascript-url)
 - [wangEditor](#wangEditor)
 - [mark-text](#mark-text)
+- [drag](#拖拽)
 
 # gulp-javascript-obfuscator
 
@@ -279,3 +280,7 @@ npm run serve
 ![Alt text](image-4.png)
 
 ![Alt text](image-5.png)
+
+# 拖拽
+
+![Alt text](image-6.png)

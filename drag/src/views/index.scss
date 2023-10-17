@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.dragBox {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  box-sizing: border-box;
+  .dragItem {
+    width: 200px;
+    height: 80vh;
+    box-sizing: border-box;
+    border: 1px #e1e2e5 solid;
+    padding: 0 20px;
+    .dragNav {
+      width: 160px;
+      height: 32px;
+      border: 1px #1890ff solid;
+      color: #fff;
+      background-color: #1890ff;
+      border-radius: 4px;
+      text-align: center;
+      line-height: 32px;
+      margin-top: 20px;
+      cursor: move;
+    }
+  }
+  .dragComponents {
+    margin-left: 32px;
+    flex: 1;
+    height: 80vh;
+    box-sizing: border-box;
+    border: 1px #e1e2e5 solid;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.dragging {
+  opacity: 0.5;
+}
