@@ -4,7 +4,6 @@
     :style="dragStyle"
     :class="[
       {
-        'vue-drag-active': active,
         'vue-drag-moving': draging,
       },
     ]"
@@ -35,7 +34,6 @@ export default {
   data() {
     return {
       draging: false,
-      active: false,
       beforeMove: {
         left: '',
         top: '',
@@ -56,7 +54,6 @@ export default {
   mounted() {},
   methods: {
     handleDragStart(event) {
-      this.active = true;
       event.stopPropagation();
 
       const { pageX, pageY } = event;
@@ -119,30 +116,39 @@ export default {
       });
 
       Object.assign({ left: this.left, top: this.top }, snapObj);
-      this.$emit('update:left', snapObj.left);
-      this.$emit('update:top', snapObj.top);
+
+      this.$emit('update:left', snapObj.left < 0 ? 0 : snapObj.left);
+      this.$emit('update:top', snapObj.top < 0 ? 0 : snapObj.top);
     },
 
     //吸附对齐
     snapCheck(obj) {
-      let { width, height, left, top } = obj;
+      let { width, height, left, top } = obj; //移动元素信息
+
       //这里+15是为了扩大吸附范围
       let snapNumber = this.snapNumber + 15;
       return new Promise((resolve) => {
         const childNode = this.$el.parentNode.childNodes;
-
-        console.log('childNode', childNode);
 
         for (let i = 0; i < childNode.length - 1; i++) {
           let node = childNode[i];
           if (node.className.includes('vue-drag-moving')) {
             continue;
           }
+
           let style = node.style;
-          let cw = parseFloat(style.width),
-            ch = parseFloat(style.height),
+          let cw = parseFloat(node.offsetWidth),
+            ch = parseFloat(node.offsetHeight),
             cl = parseFloat(style.left),
             ct = parseFloat(style.top);
+
+          console.log(
+            '移动元素信息',
+            JSON.stringify({ width, height, left, top })
+          );
+          console.log('对比元素信息', JSON.stringify({ cw, ch, cl, ct }));
+
+          console.log('---', Math.abs(cw + cl - left));
 
           //左对左
           const lTol = Math.abs(cl - left) < snapNumber;
@@ -165,6 +171,38 @@ export default {
           const bTot = Math.abs(ct + ch - top) < snapNumber;
           //中对中
           const CToC = Math.abs(ct + ch / 2 - top - height / 2) < snapNumber;
+
+          if (lTol) {
+            console.log('左对左');
+          }
+          if (rTor) {
+            console.log('右对右');
+          }
+          if (lToR) {
+            console.log('左对右');
+          }
+          if (rTol) {
+            console.log('右对左');
+          }
+          if (cToc) {
+            console.log('中对中');
+          }
+          if (tTot) {
+            console.log('顶对顶');
+          }
+          if (tTob) {
+            console.log('顶对底');
+          }
+          if (bTob) {
+            console.log('底对底');
+          }
+          if (bTot) {
+            console.log('底对顶');
+          }
+          if (CToC) {
+            console.log('中对中');
+          }
+
           if (
             lTol ||
             rTor ||
@@ -220,6 +258,7 @@ export default {
             eventBus.$emit('moving');
           }
         }
+
         resolve({ left, top, width, height });
       });
     },
